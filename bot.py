@@ -15,8 +15,10 @@ bot = commands.Bot(command_prefix='!')
 
 @bot.command()
 async def ping(ctx):
-    "Returns pong"
-    await ctx.send('pong')
+    "Returns pong and time message was sent"
+    ID = ctx.message.id()
+    time = ((ID/4194304)+1420070400000)/1000
+    await ctx.send(f"pong, message received by discord at {time} unix epoch time")
 
 @bot.command()
 async def say(ctx, *, arg):
